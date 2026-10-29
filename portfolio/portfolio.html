@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nandika Mishra's student portfolio, projects, skills and certificates.">
+    <title>Nandika Mishra | Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #111318;
+            --card: #1b1e26;
+            --nav: #191c23;
+            --yellow: #f4c542;
+            --white: #f5f5f5;
+            --muted: #c6c7ce;
+            --border: #30333d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        header {
+            background: var(--nav);
+            padding: 16px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+        }
+
+        .logo span,
+        .highlight {
+            color: var(--yellow);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--yellow);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 75px 10%;
+            background: radial-gradient(
+                circle at top right, #30313a, var(--bg) 60%
+            );
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: slideUp 0.8s ease both;
+        }
+
+        .tag {
+            color: var(--yellow);
+            letter-spacing: 2px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 60px);
+            line-height: 1.2;
+            margin: 18px 0;
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            margin-bottom: 15px;
+            font-size: clamp(20px, 3vw, 27px);
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        .hero p.description {
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        .profile-wrap {
+            flex-shrink: 0;
+            width: 245px;
+            height: 245px;
+            border: 3px solid var(--yellow);
+            border-radius: 50%;
+            padding: 8px;
+            box-shadow: 0 0 35px #f4c54220;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--card);
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 22px;
+            background: var(--yellow);
+            color: #111318;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--yellow);
+            border-radius: 7px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--yellow);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--yellow);
+            margin-left: 8px;
+        }
+
+        section:not(.hero) {
+            padding: 70px 10%;
+            scroll-margin-top: 80px;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        .heading::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 4px;
+            background: var(--yellow);
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        .about-card,
+        .contact-card {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .about-card p + p {
+            margin-top: 12px;
+        }
+
+        .skills,
+        .projects,
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .skill {
+            background: var(--card);
+            color: var(--yellow);
+            border: 1px solid var(--yellow);
+            border-radius: 8px;
+            padding: 12px 22px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: var(--yellow);
+            color: var(--bg);
+            transform: translateY(-4px);
+        }
+
+        .project,
+        .certificate {
+            flex: 1 1 240px;
+            max-width: 350px;
+            padding: 25px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project:hover,
+        .certificate:hover {
+            transform: translateY(-6px);
+            border-color: var(--yellow);
+        }
+
+        .project h3,
+        .certificate h3 {
+            color: var(--yellow);
+            margin-bottom: 12px;
+        }
+
+        .project p,
+        .certificate p {
+            margin-bottom: 14px;
+        }
+
+        .project small,
+        .certificate small {
+            color: #a5a7b1;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .text-link {
+            color: var(--yellow);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .text-link:hover {
+            text-decoration: underline;
+        }
+
+        .contact-card p {
+            margin: 12px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-card a {
+            color: var(--yellow);
+            text-decoration: none;
+        }
+
+        .contact-buttons {
+            margin-top: 22px;
+        }
+
+        footer {
+            background: var(--nav);
+            text-align: center;
+            padding: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 760px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero {
+                min-height: auto;
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 55px 7%;
+            }
+
+            .profile-wrap {
+                width: 175px;
+                height: 175px;
+            }
+
+            section:not(.hero) {
+                padding: 55px 7%;
+            }
+
+            .heading {
+                font-size: 27px;
+            }
+
+            .btn {
+                margin: 5px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav aria-label="Main navigation">
+            <h2 class="logo">Nandika<span>.</span></h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="tag">HELLO, WELCOME TO MY PORTFOLIO</p>
+
+                <h1>Hi, I'm <span class="highlight">Nandika Mishra</span></h1>
+
+                <h2>
+                    <span id="typing-text">Computer Science and Information Technology Student</span>
+                </h2>
+
+                <p class="description">
+                    B.Tech CSIT student at GL Bajaj (2025–2029),
+                    passionate about programming, web development,
+                    creative ideas and learning new technologies.
+                </p>
+
+                <a href="#projects" class="btn">Explore My Work ↗</a>
+
+                <a href="resume.pdf" class="btn btn-outline"
+                   download="Nandika_Mishra_Resume.pdf">
+                    Download Resume ↓
+                </a>
+            </div>
+
+            <div class="profile-wrap">
+                <!-- Replace profile.jpg with your own photo -->
+                <img
+                    src="profile.jpg"
+                    alt="Nandika Mishra profile photo"
+                    class="profile-photo"
+                    onerror="this.style.display='none'; this.parentElement.style.background='#1b1e26'; this.parentElement.innerHTML='<div style=&quot;display:flex;align-items:center;justify-content:center;height:100%;font-size:65px;color:#f4c542;font-weight:bold&quot;>NM</div>';"
+                >
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="reveal">
+            <h2 class="heading">About Me</h2>
+
+            <div class="about-card">
+                <p>
+                    I'm pursuing B.Tech in Computer Science and Information
+                    Technology at GL Bajaj Institute of Technology and
+                    Management.
+                </p>
+
+                <p>
+                    I enjoy learning programming, solving problems and
+                    creating projects that turn ideas into useful solutions.
+                    I'm continuously improving my technical and creative skills.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="reveal">
+            <h2 class="heading">My Skills</h2>
+
+            <div class="skills">
+                <div class="skill">Java</div>
+                <div class="skill">Python</div>
+                <div class="skill">C Programming</div>
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Git & GitHub</div>
+                <div class="skill">Problem Solving</div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="reveal">
+            <h2 class="heading">My Projects</h2>
+
+            <div class="projects">
+                <article class="project">
+                    <h3>AI Study Planner</h3>
+                    <p>
+                        A student-focused study planner concept for organizing
+                        subjects, study schedules and learning goals.
+                    </p>
+                    <small>HTML · CSS · JavaScript</small>
+                    <a class="text-link"
+                       href="https://github.com/nandika25-hub"
+                       target="_blank" rel="noopener noreferrer">
+                        View on GitHub ↗
+                    </a>
+                </article>
+
+                <article class="project">
+                    <h3>Smart Tourism Recommender</h3>
+                    <p>
+                        A tourism platform concept for suggesting destinations
+                        and highlighting local businesses and attractions.
+                    </p>
+                    <small>AI/ML · Tourism · Recommendations</small>
+                    <a class="text-link"
+                       href="https://github.com/nandika25-hub"
+                       target="_blank" rel="noopener noreferrer">
+                        View on GitHub ↗
+                    </a>
+                </article>
+
+                <article class="project">
+                    <h3>Web Development Practice</h3>
+                    <p>
+                        Beginner-friendly web pages created while learning
+                        front-end development and responsive design.
+                    </p>
+                    <small>HTML · CSS · JavaScript</small>
+                    <a class="text-link"
+                       href="https://github.com/nandika25-hub"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore GitHub ↗
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="reveal">
+            <h2 class="heading">Certificates & Achievements</h2>
+
+            <div class="certificates">
+                <article class="certificate">
+                    <h3>IBM Certificate</h3>
+                    <p>
+                        Add your IBM course or certification details here.
+                    </p>
+                    <small>IBM · Certificate</small>
+                    <a class="text-link"
+                       href="https://www.ibm.com/training/"
+                       target="_blank" rel="noopener noreferrer">
+                        IBM Training ↗
+                    </a>
+                </article>
+
+                <article class="certificate">
+                    <h3>Vodafone Certificate</h3>
+                    <p>
+                        Add your Vodafone learning program or achievement here.
+                    </p>
+                    <small>Vodafone · Achievement</small>
+                    <a class="text-link"
+                       href="https://www.vodafone.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        Official Website ↗
+                    </a>
+                </article>
+
+                <article class="certificate">
+                    <h3>LinkedIn Learning</h3>
+                    <p>
+                        Add your completed course name and certificate link.
+                    </p>
+                    <small>LinkedIn · Learning</small>
+                    <a class="text-link"
+                       href="https://www.linkedin.com/in/nandika-mishra-2949a4379/"
+                       target="_blank" rel="noopener noreferrer">
+                        LinkedIn Learning ↗
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="reveal">
+            <h2 class="heading">Let's Connect</h2>
+
+            <div class="contact-card">
+                <p>
+                    Have an opportunity or idea?
+                    I'd love to connect with you!
+                </p>
+
+                <p>
+                    GitHub:
+                    <a href="https://github.com/nandika25-hub"
+                       target="_blank" rel="noopener noreferrer">
+                        github.com/nandika25-hub
+                    </a>
+                </p>
+
+                <p>
+                    Email:
+                    <a href="mailto:nanadikamishra25@gmail.com">
+                        nanadikamishra25@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    LinkedIn:
+                    <a href="https://www.linkedin.com/in/nandika-mishra-2949a4379/"
+                       target="_blank" rel="noopener noreferrer">
+                        Add your profile URL
+                    </a>
+                </p>
+
+                <div class="contact-buttons">
+                    <a class="btn"
+                       href="mailto:nanadikamishra25@gmail.com?subject=Portfolio%20Contact">
+                        Email Me ✉
+                    </a>
+
+                    <a class="btn btn-outline"
+                       href="https://github.com/nandika25-hub"
+                       target="_blank" rel="noopener noreferrer">
+                        GitHub ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © <span id="year"></span> Nandika Mishra · Made with ♥
+        </p>
+    </footer>
+
+    <script>
+        // Set the current year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Animated introduction
+        const typingText = document.getElementById("typing-text");
+
+        const roles = [
+            "Computer Science Student",
+            "Aspiring Developer",
+            "Creative Problem Solver"
+        ];
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+
+            if (deleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingText.textContent =
+                currentRole.substring(0, charIndex);
+
+            let delay = deleting ? 45 : 85;
+
+            if (!deleting && charIndex === currentRole.length) {
+                deleting = true;
+                delay = 1300;
+            } else if (deleting && charIndex === 0) {
+                deleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                delay = 350;
+            }
+
+            window.setTimeout(typeRole, delay);
+        }
+
+        // Start the typing effect
+        typeRole();
+
+        // Reveal sections as they enter the screen
+        const revealItems = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                function(entries, currentObserver) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            currentObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 }
+            );
+
+            revealItems.forEach(function(item) {
+                observer.observe(item);
+            });
+        } else {
+            revealItems.forEach(function(item) {
+                item.classList.add("visible");
+            });
+        }
+    </script>
+
+</body>
+</html>
